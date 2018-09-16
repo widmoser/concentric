@@ -1,12 +1,15 @@
 const data = [{
     name: 'Nucleus',
-    items: getNames(20)
+    items: getNames(5)
 }, {
     name: 'Shouldering Core Activity',
-    items: getNames(50)
+    items: getNames(15)
 }, {
     name: 'Participating',
-    items: getNames(100)
+    items: getNames(30)
+}, {
+    name: 'Contacts',
+    items: getNames(80)
 }];
 
 const color = [
@@ -43,6 +46,7 @@ function addCircle(circle, index) {
     const g = d3.select(this);
     const ringRadius = 500 / data.length;
     const textRadius = (data.length - index) * ringRadius - ringRadius*0.5;
+    const textSize = Math.min(textRadius*3 / circle.items.length, 20);
     g.append('circle')
         .attr('cx', 0)
         .attr('cy', 0)
@@ -55,7 +59,7 @@ function addCircle(circle, index) {
         })
         .enter()
         .append('text')
-        .style('font-size', 15)
+        .style('font-size', textSize)
         .attr('text-anchor', 'middle')
         .attr('alignment-baseline', 'middle')
         .attr('x', function(name, index, arr) {
