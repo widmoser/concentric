@@ -1,12 +1,12 @@
 const data = [{
     name: 'Nucleus',
-    items: getNames(3)
+    items: getNames(20)
 }, {
     name: 'Shouldering Core Activity',
-    items: getNames(25)
+    items: getNames(50)
 }, {
     name: 'Participating',
-    items: getNames(50)
+    items: getNames(100)
 }];
 
 const color = [
@@ -15,6 +15,21 @@ const color = [
     '#FFA8A8',
     '#FFCFA8',
 ];
+
+/**
+ * Returns a y value for an angle expressed as a fraction of 2*PI.
+ *
+ * The value is a replacement for sinus and growths linearly proportional to the fraction.
+ */
+function linearY(fraction) {
+    if (fraction <= 0.25){
+        return -fraction*4;
+    } else if (fraction >= 0.75) {
+        return -(fraction - 1)*4;
+    } else {
+        return (fraction - 0.5)*4;
+    }
+}
 
 const svg = d3.select('#circles');
 
@@ -40,25 +55,18 @@ function addCircle(circle, index) {
         })
         .enter()
         .append('text')
-        .style('font-size', 30)
+        .style('font-size', 15)
         .attr('text-anchor', 'middle')
         .attr('alignment-baseline', 'middle')
         .attr('x', function(name, index, arr) {
-            const angle = index*Math.PI*2 / arr.length;
-            const sin = Math.sin(angle);
-            return Math.cos(angle)*(textRadius + Math.abs(sin)*ringRadius*0.4);
+            const fraction = (index / arr.length);
+            const sign = (fraction > 0.25) && (fraction < 0.75) ? -1 : 1;
+            const angle = Math.asin(linearY(fraction));
+            return sign*Math.cos(angle)*textRadius;
         })
         .attr('y', function(name, index, arr) {
             const fraction = (index / arr.length);
-            let y;
-            if (fraction <= 0.25){
-                y = -fraction*4;
-            } else if (fraction >= 0.75) {
-                y = -(fraction - 1)*4;
-            } else {
-                y = (fraction - 0.5)*4;
-            }
-            return Math.sign(y)*Math.pow(Math.abs(y), 0.95)*(textRadius + ringRadius*0.2);
+            return linearY(fraction)*textRadius;
         })
         .attr('z', 100)
         .text(function (name) {
