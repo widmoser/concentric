@@ -2,11 +2,26 @@
 <head>
 </head>
 <body>
-<svg id="circles" width="1000" height="1000" viewBox="-500 -500 1000 1000">
+<svg id="circles" width="1000" height="1000" viewBox="0 0 100 100">
 </svg>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="names.js"></script>
 <script src="circles.js"></script>
+<script>
+    renderCircles(document.getElementById('circles'), [{
+        name: 'Nucleus',
+        items: getNames(5)
+    }, {
+        name: 'Shouldering Core Activity',
+        items: getNames(15)
+    }, {
+        name: 'Participating',
+        items: getNames(30)
+    }, {
+        name: 'Contacts',
+        items: getNames(80)
+    }]);
+</script>
 </body>
 </html>
