@@ -1,0 +1,19 @@
+{
+  "name": "concentric",
+  "version": "0.1.0",
+  "description": "Rendering utilities for concentric circles.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/widmoser/concentric.git"
+  },
+  "author": "Hannes Widmoser",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/widmoser/concentric/issues"
+  },
+  "homepage": "https://github.com/widmoser/concentric#readme"
+}
