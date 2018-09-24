@@ -1,3 +1,7 @@
+if (require !== undefined) {
+    d3 = require('d3-node').d3;
+}
+
 /**
  * Renders concentric circles.
  *
@@ -7,7 +11,7 @@
  * renderer will create a concentric circle for each object and render the strings contained in the items inside the
  * circle.
  */
-function renderCircles(rootElement, data) {
+function renderCircles({selection, data, width = 1000, height = 1000, x = 0, y = 0}) {
     const color = [
         '#6BA3A3',
         '#8AD18A',
@@ -30,14 +34,13 @@ function renderCircles(rootElement, data) {
         }
     }
 
-    const viewBox = rootElement.viewBox.baseVal;
-    const smallerViewBoxSize = Math.min(viewBox.width, viewBox.height);
+    const smallerViewBoxSize = Math.min(width, height);
     const minTextSize = smallerViewBoxSize * 0.02;
 
-    const translateX = viewBox.x + viewBox.width/2;
-    const translateY = viewBox.y + viewBox.height/2;
+    const translateX = x + width/2;
+    const translateY = y + height/2;
 
-    d3.select(rootElement).selectAll('g')
+    selection.selectAll('g')
         .data(data.reverse())
         .enter()
         .append('g')
@@ -80,3 +83,7 @@ function renderCircles(rootElement, data) {
             });
     }
 }
+
+module.exports = {
+    renderCircles
+};

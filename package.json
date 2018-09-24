@@ -2,8 +2,9 @@
   "name": "concentric",
   "version": "0.1.0",
   "description": "Rendering utilities for concentric circles.",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/widmoser/concentric/issues"
   },
-  "homepage": "https://github.com/widmoser/concentric#readme"
+  "homepage": "https://github.com/widmoser/concentric#readme",
+  "dependencies": {
+    "d3-node": "^2.0.1",
+    "express": "^4.16.3"
+  }
 }

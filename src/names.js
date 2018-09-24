@@ -1028,3 +1028,7 @@ function getNames(count) {
     }
     return freshNames;
 }
+
+exports = {
+    getNames
+};
