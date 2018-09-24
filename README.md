@@ -14,7 +14,7 @@ Renders concentric circles into an SVG image. The entire rendering data is encod
 
 - *c* (Required) A list of labels that go into a concentric circle separated by `|`. Note that you can use multiple `c` parameters to specify the concentric circles starting with the innermost one.
 
-Example: [`/render/api?c=a|b|c&c=d|e|f`](https://us-central1-concentric-circles.cloudfunctions.net/renderWithQuery?c=a|b|c&c=d|e|f)
+  Example: [`/render/api?c=a|b|c&c=d|e|f`](https://us-central1-concentric-circles.cloudfunctions.net/renderWithQuery?c=a|b|c&c=d|e|f)
 
 - *w* (Optional) The width of the resulting SVG.
 
