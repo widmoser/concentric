@@ -8,16 +8,23 @@ The rendering can be accessed via different means.
 
 The web server provides two endpoints:
 
-### GET /render/api
+### GET /api/circles
 
 Renders concentric circles into an SVG image. The entire rendering data is encoded as query parameters making this endpoint feasible for sharing the url. The following query parameters are supported.
 
 - *c* (Required) A list of labels that go into a concentric circle separated by `|`. Note that you can use multiple `c` parameters to specify the concentric circles starting with the innermost one.
+  Example: [`/api/circles?c=a|b|c&c=d|e|f`](https://us-central1-concentric-circles.cloudfunctions.net/renderWithQuery?c=a|b|c&c=d|e|f)
+- *w* (Optional) The width of the resulting SVG. Default 1000 pixels.
+- *h* (Optional) The height of the resulting SVG. Default 1000 pixels.
+- *d* (Optional) Whether to show a download prompt instead of rendering the SVG in the browser. In order to enable this you have to append `d=true` as a query parameter. Default *false*.
 
-  Example: [`/render/api?c=a|b|c&c=d|e|f`](https://us-central1-concentric-circles.cloudfunctions.net/renderWithQuery?c=a|b|c&c=d|e|f)
+### POST /api/render
 
-- *w* (Optional) The width of the resulting SVG.
+Renders concentric circles into an SVG image. The entire rendering data is encoded as json POST data. The json object has the following fields.
 
-- *h* (Optional) The height of the resulting SVG.
+- *circles* (Required) An array of json objects where each object has the following fields.
+    - *items* (Required) An array of strings that should be rendered within this circle.  
+- *width* (Optional) The width of the resulting SVG. Default 1000 pixels.
+- *height* (Optional) The height of the resulting SVG. Default 1000 pixels.
+- *download* (Optional) Whether to show a download prompt instead of rendering the SVG in the browser. Default *false*.
 
-- *d* (Optional) Whether to show a download prompt instead of rendering the SVG in the browser. In order to enable this you have to append `d=true` as a query parameter.
