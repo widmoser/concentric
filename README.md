@@ -6,6 +6,12 @@ The rendering can be accessed via different means.
 
 ## Web server
 
+Run locally with 
+
+```shell
+npm start
+```
+
 The web server provides two endpoints:
 
 ### GET /api/circles
@@ -28,3 +34,32 @@ Renders concentric circles into an SVG image. The entire rendering data is encod
 - *height* (Optional) The height of the resulting SVG. Default 1000 pixels.
 - *download* (Optional) Whether to show a download prompt instead of rendering the SVG in the browser. Default *false*.
 
+## GCloud functions
+
+### GET based endpoint
+
+Deploy with
+
+```shell
+gcloud functions deploy renderWithQuery
+```
+
+Access at 
+
+```
+https://us-central1-concentric-circles.cloudfunctions.net/renderWithQuery
+```
+
+### POST based endpoint
+
+Deploy with
+
+```shell
+gcloud functions deploy renderWithPostData
+```
+
+Access at 
+
+```
+https://us-central1-concentric-circles.cloudfunctions.net/renderWithPostData
+```

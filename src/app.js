@@ -14,3 +14,4 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 // GCloud function support.
 exports.renderWithQuery = endpoints.renderWithQuery;
+exports.renderWithPostData = endpoints.renderWithPostData;
