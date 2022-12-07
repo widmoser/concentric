@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/widmoser/concentric#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "d3-node": "^2.0.1",
-    "express": "^4.16.3"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "commander": "^2.18.0"
